@@ -1,0 +1,61 @@
+version: '3.3'
+services:
+  node:
+    container_name: node_tp
+    image: 'node:latest'
+    working_dir: /home/node/app
+    env_file:
+      - .env
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm run watch'
+    ports:
+      - '3000:3000'
+    volumes:
+      - './src:/home/node/app'
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    networks:
+      - back_cote
+
+  mongo:
+    image: mongo
+    container_name: mongo_tp_
+    environment:
+      MONGO_INITDB_DATABASE: apidb
+      MONGO_INITDB_ROOT_USERNAME: tp_api
+      MONGO_INITDB_ROOT_PASSWORD: apipass
+    restart: always
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
+    working_dir: /data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - back_cote
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: always
+    container_name: mongo_express_tp
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_AUTH_DATABASE: apidb
+      ME_CONFIG_MONGODB_AUTH_USERNAME: tp_api
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: apipass
+      ME_CONFIG_BASICAUTH_USERNAME: tp_api
+      ME_CONFIG_BASICAUTH_PASSWORD: apipass
+    ports:
+      - '8081:8081'
+    depends_on:
+      - mongo
+    networks:
+      - back_cote
+
+networks:
+  back_cote:
+    driver: bridge

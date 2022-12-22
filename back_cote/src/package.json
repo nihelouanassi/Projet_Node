@@ -1,0 +1,25 @@
+{
+  "name": "projet_tp_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nihelouanassi/Projet_Node.git"
+  },
+  "author": "nihel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nihelouanassi/Projet_Node/issues"
+  },
+  "homepage": "https://github.com/nihelouanassi/Projet_Node#readme",
+
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
