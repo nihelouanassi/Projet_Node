@@ -50,7 +50,7 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: tp_api
       ME_CONFIG_BASICAUTH_PASSWORD: apipass
     ports:
-      - '8081:8081'
+      - '8082:8082'
     depends_on:
       - mongo
     networks:
