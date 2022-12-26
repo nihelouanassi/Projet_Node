@@ -23,6 +23,10 @@ let userSchema = new Schema({
         type: Boolean,
         required: true,
         default: 0
+    },
+    role:{
+        type:String
+
     }
 });
 

@@ -27,5 +27,8 @@ server.use(cors());
 const userRoute = require("./api/routes/userRoute");
 userRoute(server);
 
+const postRoute= require("./api/routes/postRoute");
+postRoute(server);
+
 server.listen(port, hostname);
 

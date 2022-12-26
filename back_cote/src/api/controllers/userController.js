@@ -69,7 +69,7 @@ exports.userLogin = (req, res, error) => {
                                         firstname: user.firstname,
                                         lastname: user.lastname,
                                         email: user.email,
-                                        admin: user.admin,
+                                        role: user.role,
                                         connected: 1
                                     }
 
@@ -193,12 +193,5 @@ exports.deleteUser = (req, res) => {
 
 
 
-// Modifier quelques informations de l'utilisateur
-exports.patchUser = (req, res) => {
-    User.findByIdAndUpdate({ userId: req.params.userId }, req.body, { new: true })
-        .then(result => res.status(200).json({ msg: "L'utilisateur est bien mis à jour", result }))
-        .catch((error) => res.status(404).json({ msg: "Utilisateur  non trouvé" }))
-
-};
 
 
