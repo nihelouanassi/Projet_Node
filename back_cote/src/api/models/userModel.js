@@ -19,15 +19,17 @@ let userSchema = new Schema({
         type: String,
         required: true
     },
-    connected: {
+    connected: {
         type: Boolean,
         required: true,
         default: 0
     },
-    role:{
-        type:String
 
+    role: {
+        type: String,
+        default:'user'
     }
+   
 });
 
 module.exports = mongoose.model("User", userSchema);
