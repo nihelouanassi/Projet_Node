@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import ReactDOM from 'react-dom';
 import Posts from './pages/Posts';
 import CreatePost from './pages/CreatePost';
+import NavBar from './pages/NavBar';
 
 
 
@@ -24,9 +25,16 @@ const App =() => {
     
           {/* <div className='w-screen'><Nav /></div>  */}
           <Router>
+          <div className='w-full'><NavBar /></div> 
            
            
             <Routes>
+            <Route path="/" element={
+                localStorage.getItem("userEmail") === "" ? 
+                    getLR(<Login />)
+                    :
+                    getPage(<Posts/>)
+                }></Route>
              
               <Route path="/Login" element ={getLR(<Login />)}></Route>
               <Route path="/Register" element={getLR(<Register />)}></Route>

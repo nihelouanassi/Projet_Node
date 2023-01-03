@@ -14,3 +14,9 @@ export const getAllUsers = async (user) => {
     return res.data;
     
 }
+
+export const logout = async (userId) => {
+    const res = await axios.post(`http://localhost:3000/user/logout/${userId}`);
+    return res.data;
+ 
+}

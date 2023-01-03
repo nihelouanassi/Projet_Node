@@ -25,6 +25,8 @@ const Login = () =>{
 
                 localStorage.setItem("userEmail", user.email)
                 localStorage.setItem("userId", userData.user.id)
+                localStorage.setItem("userFirstname", userData.user.firstname)
+                localStorage.setItem("userLastname", userData.user.lastname)
                 navigate("/Posts");
             }catch (error){
                 if (error.response){
